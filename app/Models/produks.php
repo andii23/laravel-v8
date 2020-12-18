@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class produks extends Model
 {
     use HasFactory;
+    public $table="produks";
+    protected $guarded=['id','created_at','updated_at'];
 }

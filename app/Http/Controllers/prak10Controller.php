@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Models\produks;
+use App\Models\produks;
 
 class prak10Controller extends Controller
 {
@@ -27,7 +27,8 @@ class prak10Controller extends Controller
      */
     public function create()
     {
-        //
+        //menampilkan form untk nambah data
+        return view ('prak10.create');
     }
 
     /**
@@ -38,7 +39,17 @@ class prak10Controller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //menerima data
+        $pesan = ['required'=> 'field harus diisi'];
+        $this->validate($request,[
+            'kat' => 'required',
+            'desk' => 'required',
+        ]);
+        produks::create([
+                'kategori'=> $request->kat,
+                'keterangan'=> $request->desk,
+        ]);
+        return redirect()->route('prak10.index');
     }
 
     /**
@@ -60,7 +71,9 @@ class prak10Controller extends Controller
      */
     public function edit($id)
     {
-        //
+        //menampilkan data dan form yang mau di edit
+        $edit = produks::where('id', $id)->first();
+        return view('prak10.edit', compact('edit'));
     }
 
     /**
@@ -72,7 +85,17 @@ class prak10Controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //proses update data
+        $pesan = ['required'=> 'field harus diisi'];
+        $this->validate($request,[
+            'kat' => 'required',
+            'desk' => 'required',
+        ]);
+          produks::where('id', $id)->update([
+            'kategori' => $request->kat,
+            'keterangan' => $request->desk,
+          ]); 
+          return redirect()->route('prak10.index');
     }
 
     /**
@@ -83,6 +106,9 @@ class prak10Controller extends Controller
      */
     public function destroy($id)
     {
-        //
+        //proses hapus
+        produks::where('id', $id)->delete();
+          return redirect()->route('prak10.index');
+
     }
 }
