@@ -5,6 +5,7 @@ use App\Http\Controllers\utsController;
 use App\Http\Controllers\prak9Controller;
 use App\Http\Controllers\prak7Controller;
 use App\Http\Controllers\prak10Controller;
+use App\Http\Controllers\prak11Controller;
 /*
 /*
 |--------------------------------------------------------------------------
@@ -55,3 +56,4 @@ Route::get('/prak9_2',[prak9Controller::class,'QB_tgs2']);
 Route::get('/prak9_3',[prak9Controller::class,'QB_tgs3']);
 
 Route::resource('/prak10',prak10Controller::class);
+Route::resource('/prak11',prak11Controller::class);
