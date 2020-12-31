@@ -56,4 +56,11 @@ Route::get('/prak9_2',[prak9Controller::class,'QB_tgs2']);
 Route::get('/prak9_3',[prak9Controller::class,'QB_tgs3']);
 
 Route::resource('/prak10',prak10Controller::class);
+//route untuk logout
+Route::get('/prak11/logout',[prak11Controller::class,'logout'])->name('prak11.logout');
+
+
 Route::resource('/prak11',prak11Controller::class);
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
