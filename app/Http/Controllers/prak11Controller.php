@@ -62,10 +62,10 @@ class prak11Controller extends Controller
         //buat validasi
         $aturan = [
             'nama'=> 'required',
-            'id_kategori'=> 'required|numeric',
-            'qty'=> 'required|numeric',
-            'harga_beli'=> 'required|numeric',
-            'harga_jual'=> 'required|numeric',
+            'kat'=> 'required|numeric',
+            'stok'=> 'required|numeric',
+            'hb'=> 'required|numeric',
+            'hj'=> 'required|numeric',
         ];
         $msg = [
             'required'=>'wajib diisi!!!',
@@ -80,7 +80,6 @@ class prak11Controller extends Controller
                 'qty'=> $request->stok,
                 'harga_beli'=> $request->hb,
                 'harga_jual'=> $request->hj,
-                
         ]);
         return redirect()->route('prak11.index');
     }
@@ -126,12 +125,11 @@ class prak11Controller extends Controller
         //
         //buat validasi
         $aturan = [
-            'nama'=> 'required',
-            'id_kategori'=> 'required|numeric',
-            'qty'=> 'required|numeric',
-            'harga_beli'=> 'required|numeric',
+           'nama'=> 'required',
+            'kat'=> 'required|numeric',
+            'stok'=> 'required|numeric',
+            'hb'=> 'required|numeric',
             'hj'=> 'required|numeric',
-            'kat'=>'required|numeric',
         ];
         $msg = [
             'required'=>'wajib diisi!!!',
